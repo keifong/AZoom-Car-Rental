@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.toLogin = function(event) {
         event.preventDefault();
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
 
     window.toHome = function(event) {
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("userArray", JSON.stringify(storedUserArray));
 
             alert("Registration successful!");
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         });
     }
 
