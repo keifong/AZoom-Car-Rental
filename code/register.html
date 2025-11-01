@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        
+        <div class="masterDiv">
+            <!-- start of navbar -->
+            <div class="headerDiv">
+                <div class="navLogo">
+                    <img src="images\azoom.png">
+                </div>
+                <div class="navDiv">
+                    <!-- <p class="navItems" id="navHome">Home</p>
+                    <p class="navItems" id="navCars">Cars</p>
+                    <p class="navItems" id="navAccount">Account</p> -->
+                    <p class="navItems" id="navLogin" onclick="toLogin(event)">Login</p>
+                </div>
+            </div>
+            <!-- end of navbar -->
+
+
+            <!-- registration -->
+            <div id="formDiv_reg">
+                <div id="userTypeDiv">
+                    <button id="CustomerType" onclick="loadReg(event,0)">Customer</button>
+                    <button id="EmployeeType" onclick="loadReg(event,1)">Employee</button>
+                </div>
+
+                <!-- hide these form first -->
+                <div id="myFormDiv">
+                    <form id="formReg">
+                        <h1>Registration</h1>
+                        <input id="userType" type="text" readonly>
+                        <input id="inEmail" type="text" placeholder="  Email" required>
+                        <br>
+                        <input id="inPassword" type="password" placeholder="  Password" required>
+                        <br>
+                        <button class="myInputs" type="submit" >Register</button>
+                        <!-- might change this approach later on -->
+                        <span id="spanErrorMsg"></span>
+                    </form>
+                    <img id="carMountain" src="images\KIAKIAKIA.jpg">
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

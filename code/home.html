@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Home</title>
+        <!-- <script src="script.js"></script> -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        
+        <div class="masterDiv">
+            <!-- start of navbar -->
+            <div class="headerDiv">
+                <div class="navLogo">
+                    <img src="images\azoom.png">
+                </div>
+                <div class="navDiv">
+                    <p class="navItems" id="navHome" onclick="toHome(event)">Home</p>
+                    <p class="navItems" id="navLogout" onclick="toLogin(event)">Logout</p>
+                </div>
+            </div>
+            <!-- end of navbar -->
+            <div id="containTripleDiv">
+            <img id="bcS"   src="images\blackCarSilhoe.jpg">
+                <div id="tripleDiv">
+                    <div class="elementDiv" id="div1">
+                        <img src="images\KIA.png" onclick="toRent(event, 0)">
+                    </div>
+                    <div class="elementDiv" id="div2">
+                        <img src="images\BYD.png" onclick="toRent(event, 1)">
+                    </div>
+                    <div class="elementDiv" id="div3">
+                        <img src="images\tesla.png" onclick="toRent(event, 2)"> 
+                    </div>
+                </div>
+            </div>
+            <div id="notificationBoard">
+                <h2 id="notiB_header">Notification<br>Board</h2>
+                <div class="contentDiv"">
+                    <div id="noti">
+                        <h1 id="email_display"></h1>
+                        <p id="currentCar">No Car Rented</p>
+                        <p id="res_status_display">Not Renting</p>
+                    </div>
+                    
+                    <div id="n_chargeSheet">
+                        <h2>Charge Sheet</h2>                       
+                        <p id="n_damagesFound"></p>
+                        <p id="n_tPriceToPay"></p>
+                        <button id="pay" onclick="pay(event)">Pay</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- contactUsFooter -->
+            <div id="contactUsFooter">
+                <h2>Contact Us</h2>
+                <div id="contactUsContent">
+                    <form id="cuForm">
+                        <input placeholder="Name">
+                        <input placeholder="Email"><br>
+                        <textarea placeholder="Message"></textarea>
+                        <button>Send</button>
+                    </form>
+                    <div id="cuInfo">
+                        <p>Fill in this form for any queries<br>Alternatively, reach us at our headquarters at:<br><h4>150 Lorong Chuan Drive #01-155/156/157<br>Singapore 849123</h4></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

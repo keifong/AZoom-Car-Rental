@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        
+        <div class="masterDiv">
+            <!-- start of navbar -->
+            <div class="headerDiv">
+                <div class="navLogo">
+                    <img src="images\azoom.png">
+                </div>
+                <div class="navDiv">
+                    <button id="resetAll" onclick="resetAll(event)">Reset All</button>
+                    <p class="navItems" id="navLogout" onclick="toLogin(event)">Logout</p>
+                </div>
+            </div>
+            <!-- end of navbar -->
+            <div id="emDiv">
+                <div id="custDiv">
+                    <!-- <div class="testRow">
+                        <h4>Email</h4>
+                        <h4>Status</h4>
+                        <button onclick="charge(event)">Charge</button>
+                    </div> -->
+                </div>
+                <div id="cs_BG" onclick="disappear(event)">
+                    <div id="chargeSheet" onclick="event.stopPropagation()">
+                        <h2>Charge Sheet</h2>
+                        <p id="cs_email"></p>
+                        <p id="cs_carRented"></p>
+                        <div id="d_found">
+                            <p>Damages: <p id="damagesFound">0</p></p>
+                        </div>
+                        
+                        <p id="tPriceToPay"></p>
+                        <button id="addDamages" onclick="addDamages(event)">Add Damages</button>
+                        <button id="sendCharge" onclick="sendCharge(event)">Charge</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

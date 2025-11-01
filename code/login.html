@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        
+        <div class="masterDiv">
+            <!-- start of navbar -->
+            <div class="headerDiv">
+                <div class="navLogo">
+                    <img src="images\azoom.png">
+                </div>
+                <div class="navDiv">
+                    <p class="navItems" id="navRegister" onclick="toRegister(event)">Register</p>
+                </div>
+            </div>
+            <!-- end of navbar -->
+
+            <div id="login_formDiv">
+                <form id="myForm">
+                    <h1>Login</h1>
+                    <input id="inEmail" type="text" placeholder="  Email">
+                    <br>
+                    <input id="inPassword" type="password" placeholder="  Password">
+                    <br>
+                    <button class="myInputs" type="submit" >Login</button>
+                    <!-- might change this approach later on -->
+                    <span id="spanErrorMsg"></span>
+                </form>
+                <img id="outback" src="images\BYDBYDBYD.jpg">
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,272 @@
+<html>
+    <head>
+        <title>Register</title>
+        <script src="script.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="masterDiv">
+            <!-- loading screen -->
+            <div id="loadingDiv">
+                <img id="imgLoading" src="images\sandClock.png">
+                <h3>Loading</h3>
+            </div>
+            <!-- end of loading screen -->
+            <div id="restOfThePage">
+            <!-- start of navbar -->
+            <div class="headerDiv">
+                <div class="navLogo">
+                    <img src="images\azoom.png">
+                </div>
+                <div class="navDiv">
+                   <p class="navItems" id="navHome" onclick="toHome(event)">Home</p>
+                    <p class="navItems" id="navLogout" onclick="toLogin(event)">Logout</p>
+                </div>
+            </div>
+            <!-- end of navbar -->
+            
+            <!-- start of brand choice -->
+            <div class="choices3">
+                <button id="familyC" onclick="toRent(event, 0)">
+                    KIA
+                </button>
+                <button id="businessC" onclick="toRent(event, 1)">
+                    BYD
+                </button>
+                <button id="offroadC" onclick="toRent(event, 2)">
+                    Tesla
+                </button>
+            </div>
+            <!-- end of brand choice -->
+
+            <div id="KIADiv">
+                <div class="threeCars" id="car1">
+                    <div class="container">
+                        <div class="carReserve">
+                            <h2>KIA EV9</h2>
+                            <p>Electric Space and Efficiency</p>
+                            <button onclick="reserve(event, 0)">Reserve now</button>
+                        </div>
+                        <div class="card">
+                            <div class="front" id="car1_1_front">
+                                <img src="images\kiaEV9_ex.avif">
+                            </div>
+                            <div class="back" id="car1_1_back">
+                                <img src="images\kiaEV9_in.avif">
+                            </div>
+                        </div>
+                        <div class="fillDiv"></div>
+                    </div>
+                    <div class="carDesc">
+                        <h1>KIA EV 9</h1>
+                        <h4>$50/hr</h4>
+                        <p>The Kia EV9 is a premium seven-seater electric SUV offering over 300 miles of range and ultra-fast charging. Spacious, quiet, and tech-forward, it suits families, business groups, and eco-conscious travellers. With zero fuel costs and low maintenance, it’s the smart, sustainable choice for modern renters.</p>
+                    </div>
+                </div>
+                <div class="threeCars" id="car2">
+                    <div class="container">
+                        <div class="carReserve">
+                            <h2>KIA Carens Clavis EV</h2>
+                            <p>Comfort for every journey</p>
+                            <button onclick="reserve(event, 1)">Reserve now</button>
+                        </div>
+                        <div class="card">
+                            <div class="front">
+                                <img src="images\kiaCarensClavisEV_ex.avif">
+                            </div>
+                            <div class="back">
+                                <img src="images\kiaCarensClavisEV_in.avif">
+                            </div>
+                        </div>
+                        <div class="fillDiv"></div>
+                    </div>
+                    <div class="carDesc">
+                        <h1>KIA Carens Clavis EV</h1>
+                        <h4>$40/hr</h4>
+                        <p>The Kia Carens Clavis EV is a versatile electric MPV designed for families and group travellers. Combining generous cabin space with modern tech and smooth electric performance, it offers long-range efficiency and quick charging. Practical, quiet, and cost-efficient, it’s the ideal sustainable choice for everyday rentals.</p>
+                    </div>
+                </div>
+                <div class="threeCars" id="car3">
+                    <div class="container">
+                        <div class="carReserve">
+                            <h2>KIA EV6</h2>
+                            <p>Performance meets Practicality</p>
+                            <button onclick="reserve(event, 2)">Reserve now</button>
+                        </div>
+                        <div class="card">
+                            <div class="front">
+                                <img src="images\kiaEV6_ex.avif">
+                            </div>
+                            <div class="back">
+                                <img src="images\kiaEV6_in.png">
+                            </div>
+                        </div>
+                        <div class="fillDiv"></div>
+                    </div>
+                    <div class="carDesc">
+                        <h1>KIA EV 6</h1>
+                        <h4>$30/hr</h4>
+                        <p>The Kia EV6 is a sleek, all-electric crossover offering up to 300 miles of range and ultra-fast charging that adds 60 miles in under five minutes. Blending sporty performance with comfort and technology, it’s ideal for solo travellers, couples, or professionals seeking an efficient, stylish, and sustainable rental option.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="BYDDiv">
+                <div class="threeCars" id="car1">
+                    <div class="container">
+                        <div class="carReserve">
+                            <h2>BYD Atto Ex 3</h2>
+                            <p>Designed for Space. Driven by Electricity</p>
+                            <button onclick="reserve(event, 3)">Reserve now</button>
+                        </div>
+                        <div class="card">
+                            <div class="front" id="car1_1_front">
+                                <img src="images\byd_atto_ex.avif">
+                            </div>
+                            <div class="back" id="car1_1_back">
+                                <img src="images\byd_atto3_in.avif">
+                            </div>
+                        </div>
+                        <div class="fillDiv"></div>
+                    </div>
+                    <div class="carDesc">
+                        <h1>BYD Atto Ex 3</h1>
+                        <h4>$50/hr</h4>
+                        <p>The BYD Atto 3 is a sleek all-electric compact SUV perfect for rental use—boasting a 60.5 kWh “Blade” battery with up to ~420 km WLTP range, vegan-leather interior, 440 L boot and advanced charging. With its modern tech and zero-emissions drive, it's a comfortable, efficient and eco-friendly choice for your next trip.</p>
+                    </div>
+                </div>
+                <div class="threeCars" id="car2">
+                    <div class="container">
+                        <div class="carReserve">
+                            <h2>BYD E Max 7</h2>
+                            <p>Redefining Space — Electrically.</p>
+                            <button onclick="reserve(event, 4)">Reserve now</button>
+                        </div>
+                        <div class="card">
+                            <div class="front">
+                                <img src="images\byd_eMax7_ex.avif">
+                            </div>
+                            <div class="back">
+                                <img src="images\byd_seal_in.jpg">
+                            </div>
+                        </div>
+                        <div class="fillDiv"></div>
+                    </div>
+                    <div class="carDesc">
+                        <h1>BYD E Max 7</h1>
+                        <h4>$40/hr</h4>
+                        <p>The BYD eMAX 7 is a fully-electric 6/7-seater MPV offering up to 530 km range¹, a spacious cabin and abundant tech. With comfortable seating, premium infotainment and advanced safety features, it is ideal for those needing family-friendly, zero-emissions mobility without compromising on comfort or convenience.</p>
+                    </div>
+                </div>
+                <div class="threeCars" id="car3">
+                    <div class="container">
+                        <div class="carReserve">
+                            <h2>BYD Seal</h2>
+                            <p>Sleek Performance, Spacious Comfort”</p>
+                            <button onclick="reserve(event, 5)">Reserve now</button>
+                        </div>
+                        <div class="card">
+                            <div class="front">
+                                <img src="images\byd_seal_ex.avif">
+                            </div>
+                            <div class="back">
+                                <img src="images\byd_seal_in.jpg">
+                            </div>
+                        </div>
+                        <div class="fillDiv"></div>
+                    </div>
+                    <div class="carDesc">
+                        <h1>BYD Seal</h1>
+                        <h4>$30/hr</h4>
+                        <p>The BYD Seal blends elegant design with impressive capability — offering rapid acceleration, generous luggage space, and cutting-edge tech features. Ideal for rental drivers craving both style and substance, it fits five passengers comfortably and ensures a refined drive for city trips or weekend escapes.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="TeslaDiv">
+                <div class="threeCars" id="car1">
+                    <div class="container">
+                        <div class="carReserve">
+                            <h2>Tesla Model 9</h2>
+                            <p>Next-Gen Luxury Meets Everyday Comfort</p>
+                            <button onclick="reserve(event, 6)">Reserve now</button>
+                        </div>
+                        <div class="card">
+                            <div class="front" id="car1_1_front">
+                                <img src="images\tesla_model9_ex.avif">
+                            </div>
+                            <div class="back" id="car1_1_back">
+                                <img src="images\tesla_model9_in.avif">
+                            </div>
+                        </div>
+                        <div class="fillDiv"></div>
+                    </div>
+                    <div class="carDesc">
+                        <h1>Tesla Model 9</h1>
+                        <h4>$50/hr</h4>
+                        <p>The upcoming Tesla Model 9 blends refined design with family-friendly space and modern tech. Enjoy effortlessly smooth performance, an intelligent cabin, and versatile comfort for up to five passengers—ideal for rental customers who want a premium experience without compromise.</p>
+                    </div>
+                </div>
+                <div class="threeCars" id="car2">
+                    <div class="container">
+                        <div class="carReserve">
+                            <h2>Tesla Cybertruck</h2>
+                            <p>Rugged Utility, Futuristic Style</p>
+                            <button onclick="reserve(event, 7)">Reserve now</button>
+                        </div>
+                        <div class="card">
+                            <div class="front">
+                                <img src="images\tesla_cybertruck_ex.avif">
+                            </div>
+                            <div class="back">
+                                <img src="images\tesla_cybertruck_in.jpeg">
+                            </div>
+                        </div>
+                        <div class="fillDiv"></div>
+                    </div>
+                    <div class="carDesc">
+                        <h1>Tesla Cybertruck</h1>
+                        <h4>$40/hr</h4>
+                        <p>The Tesla Cybertruck offers bold design, massive cargo capacity and serious capability. With standout exterior presence and versatile function for five adults plus gear, it’s perfect for renters who demand both practical space and standout character on the road.</p>
+                    </div>
+                </div>
+                <div class="threeCars" id="car3">
+                    <div class="container">
+                        <div class="carReserve">
+                            <h2>Tesla Model X</h2>
+                            <p>Advanced Family SUV with Signature Flair</p>
+                            <button onclick="reserve(event, 8)">Reserve now</button>
+                        </div>
+                        <div class="card">
+                            <div class="front">
+                                <img src="images\tesla_modelX_ex.avif">
+                            </div>
+                            <div class="back">
+                                <img src="images\tesla_modelX_in.jpeg">
+                            </div>
+                        </div>
+                        <div class="fillDiv"></div>
+                    </div>
+                    <div class="carDesc">
+                        <h1>Tesla Model X</h1>
+                        <h4>$30/hr</h4>
+                        <p>The Tesla Model X delivers spacious seating, cutting-edge tech and dynamic performance wrapped in a distinctive design. Great for rental use with families or groups, it combines premium comfort, practicality and standout style in one SUV experience.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="contactUsFooter">
+                <h2>Contact Us</h2>
+                <div id="contactUsContent">
+                    <form id="cuForm">
+                        <input placeholder="Name">
+                        <input placeholder="Email"><br>
+                        <textarea placeholder="Message"></textarea>
+                        <button>Send</button>
+                    </form>
+                    <div id="cuInfo">
+                        <p>Fill in this form for any queries<br>Alternatively, reach us at our headquarters at:<br><h4>150 Lorong Chuan Drive #01-155/156/157<br>Singapore 849123</h4></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
