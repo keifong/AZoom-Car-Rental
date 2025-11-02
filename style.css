@@ -8,7 +8,6 @@
 body {
     padding: 0;
     margin: 0;
-    /* background-color: #505050; */
     background: linear-gradient(#b0b0b0, #505050);
     overflow-x: hidden;
     font-family: 'Michroma';
@@ -31,7 +30,6 @@ button {
     flex-direction: row;
     justify-content: space-between;
     top: 0;
-    /* background: linear-gradient(#3b3b3b, #505050); */
     background: linear-gradient(#eaeaea, #b0b0b0);
 }
 
@@ -336,8 +334,6 @@ button:hover {
 
 #contactUsFooter {
     width: 100%;
-    /* background: linear-gradient(#f9bf8c, #c73d06); */
-    /* background-color: rgb(249, 191, 140); */
     background: linear-gradient(#b0b0b0, #eaeaea);
     color: rgb(36, 36, 36);
     opacity: 0;
@@ -347,10 +343,6 @@ button:hover {
 #contactUsFooter h2{
     margin-left: 3%;
 }
-/* 
-h2 {
-    padding: 2%;
-} */
 
 #contactUsContent {
     justify-content: space-between;
@@ -391,7 +383,6 @@ h2 {
 
 #cuInfo {
     flex: 1;
-    /* background-color: #b0b0b0; */
     background: linear-gradient(150deg, #b0b0b0, #eaeaea);
     border-radius: 30px;    
     color: #242424;
@@ -500,14 +491,6 @@ h2 {
   flex-direction: row;
 }
 
-/* .card {
-  width: 40%;
-  height: 80%;
-  position: relative;
-  transform-style: preserve-3d;
-  transform-origin: center;
-  animation-play-state: paused;
-} */
 
 .card {
   width: 30vw;
@@ -519,10 +502,6 @@ h2 {
   z-index: 10;
 }
 
-/* .fillDiv {
-  width: 60%;
-  height: 100%;
-} */
 
 .fillDiv {
   width: 30vw;
@@ -680,15 +659,6 @@ h2 {
 }
 
 
-/* #custDiv {
-    position: relative;
-    background-color: #a14900;
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-    height: fit-content;
-} */
-
 .testRow {
     width: 100%;
     height: 5vh;
@@ -710,18 +680,8 @@ h2 {
 
 /* ----------------------- */
 
-/* #chargeSheet {
-    position: absolute;
-    background-color: #b0b0b0;
-    border-radius: 20px;
-    width: fit-content;
-    padding: 5%;
-    z-index: 999;
-    position: fixed;
-} */
 
 #custDiv {
-    /* background-color: #a14900; */
     display: flex;
     flex-direction: column;
     padding: 5%;

@@ -43,10 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ----------------- Registration -----------------
-    // first ill make an empty array
-    // this array will be an array of user objects
-    // for login logic, ill cycle through all user objects and match the input data to the array of user objects
-
     const registrationForm = document.getElementById("formReg");
     if (registrationForm) {
         const userTypeDiv = document.getElementById("userTypeDiv");
@@ -103,9 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
-            // const storedUserType = localStorage.getItem("user_type");
-            // const storedEmail = localStorage.getItem("user_email");
-            // const storedPass = localStorage.getItem("user_pass");
             const storedUserArray = JSON.parse(localStorage.getItem("userArray")) || [];
             let loginExist = false;
 
@@ -168,8 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         localStorage.setItem("reservation_S", "Reserved");
         localStorage.setItem("displayColLoc", "1");
-        // need to update employee page as well
 
+        // need to update employee page as well
         localStorage.setItem("mColVis", 1);
 
         window.location.href = "home.html";
@@ -181,7 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const resStatus = localStorage.getItem("reservation_S");
     const user_E = document.getElementById("email_display");
 
-    if (user_E) { // only run if the element exists on this page
+    // check if element exists on this page
+    if (user_E) { 
         if (storedEmail) {
             user_E.textContent = "Welcome, " + storedEmail + "!";
         } else {
@@ -197,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
         notiB_resStatus.textContent = resStatus;
     }
 
-    // Make collection section visible or hide based on saved values
+    // Make collection section visible/hide based on localStorageValue
     const makeColVisible = localStorage.getItem("mColVis");
     const selectedLoc = localStorage.getItem("colLoc");
     const myCol = document.getElementById("col");
@@ -207,13 +201,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (myCol && colLoc_display) {
         if (selectedLoc) {
-            // If already selected a branch, show the saved location
+            // If branch is alr selected, show the saved location
             colLoc_display.style.display = "block";
             colLoc_display.textContent = "Collecting at " + selectedLoc;
-            myCol.style.display = "none"; // Hide buttons
+            myCol.style.display = "none";
         } 
         else if (makeColVisible == 1) {
-            // If they still need to choose a location, show the buttons
             myCol.style.display = "block";
             colLoc_display.style.display = "none";
         } 
@@ -223,12 +216,12 @@ document.addEventListener("DOMContentLoaded", () => {
             colLoc_display.style.display = "none";
         }
 
-        if (resStat_display.textContent == "Renting" ||resStat_display.textContent == "Returned" ) {
+        if (resStat_display.textContent == "Renting" || resStat_display.textContent == "Returned" ) {
             colLoc_display.style.display = "none";
         }
     }
 
-    // collection location
+    // collection location section
     window.chooseLoc = function (event, number) {
         event.preventDefault();
         const colLoc_display = document.getElementById("colLoc_display");
@@ -243,13 +236,12 @@ document.addEventListener("DOMContentLoaded", () => {
             colLoc_display.textContent = "Collecting at Branch 2";
         }
 
-        // Update UI
         colLoc_display.style.display = "block";
         col.style.display = "none";
     };
 
 
-
+    // ui update for charge
     const isChargeSent = localStorage.getItem("chargeSent");
     const numDamages = localStorage.getItem("dFound");
     const tPrice = localStorage.getItem("sCarPrice")
@@ -266,35 +258,30 @@ document.addEventListener("DOMContentLoaded", () => {
     window.pay = function(event) {
         event.preventDefault();
 
-        // Hide the charge sheet
         const chargeSheet = document.getElementById("n_chargeSheet");
         chargeSheet.style.display = "none";
 
         // Reset reservation data in localStorage
-        localStorage.removeItem("car_model");      // remove current car
-        localStorage.removeItem("sCarPrice");      // remove price
-        localStorage.setItem("reservation_S", "Not Renting");  // reset status
-        localStorage.setItem("chargeSent", "0");   // reset charge flag
-        localStorage.removeItem("dFound");         // reset damages
-        localStorage.removeItem("mColVis");        // reset location UI visibility
-        localStorage.removeItem("colLoc");         // ✅ remove selected branch
+        localStorage.removeItem("car_model");
+        localStorage.removeItem("sCarPrice");
+        localStorage.setItem("reservation_S", "Not Renting");
+        localStorage.setItem("chargeSent", "0");
+        localStorage.removeItem("dFound");
+        localStorage.removeItem("mColVis");
+        localStorage.removeItem("colLoc");
 
-        // Reset the notification board on customer page
+        // Reset Notification Board
         const notiB_currCar = document.getElementById("currentCar");
         if (notiB_currCar) notiB_currCar.textContent = "No car rented";
 
         const notiB_resStatus = document.getElementById("res_status_display");
         if (notiB_resStatus) notiB_resStatus.textContent = "Not Renting";
 
-        // ✅ Hide the collection location display
         const colLoc_display = document.getElementById("colLoc_display");
         if (colLoc_display) colLoc_display.style.display = "none";
 
         alert("Successful Payment! Thank you for renting with AZoom");
     }
-
-
-   
 
 
     // ------------------------------
@@ -360,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("reservation_S", "Renting");
         localStorage.setItem("hCollected", "Yes");
 
-        // Update Employee Page immediately
+        // Update Employee Page
         const hasCollected = document.getElementById("hasCollected");
         const hStatus = document.getElementById("hStatus");
 
@@ -368,16 +355,15 @@ document.addEventListener("DOMContentLoaded", () => {
             hasCollected.textContent = "Has Collected?: Yes";
         }
         if (hStatus) {
-            hStatus.textContent = "Booking Status: Renting"; // ✅ update employee screen instantly
+            hStatus.textContent = "Booking Status: Renting";
         }
 
-        // Update Home Page (if open in another tab/page)
+        // update notification board
         const homeStatus = document.getElementById("res_status_display");
         if (homeStatus) {
             homeStatus.textContent = "Renting";
         }
 
-        // Hide collection location on home page
         const colLoc_display = document.getElementById("colLoc_display");
         if (colLoc_display) colLoc_display.style.display = "none";
     };
