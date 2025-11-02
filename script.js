@@ -167,7 +167,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         localStorage.setItem("reservation_S", "Reserved");
+        localStorage.setItem("displayColLoc", "1");
         // need to update employee page as well
+
+        localStorage.setItem("mColVis", 1);
 
         window.location.href = "home.html";
     }
@@ -193,6 +196,58 @@ document.addEventListener("DOMContentLoaded", () => {
         notiB_currCar.textContent = selectedCar;
         notiB_resStatus.textContent = resStatus;
     }
+
+    // Make collection section visible or hide based on saved values
+    const makeColVisible = localStorage.getItem("mColVis");
+    const selectedLoc = localStorage.getItem("colLoc");
+    const myCol = document.getElementById("col");
+    const colLoc_display = document.getElementById("colLoc_display");
+
+    const resStat_display = document.getElementById("res_status_display");
+
+    if (myCol && colLoc_display) {
+        if (selectedLoc) {
+            // If already selected a branch, show the saved location
+            colLoc_display.style.display = "block";
+            colLoc_display.textContent = "Collecting at " + selectedLoc;
+            myCol.style.display = "none"; // Hide buttons
+        } 
+        else if (makeColVisible == 1) {
+            // If they still need to choose a location, show the buttons
+            myCol.style.display = "block";
+            colLoc_display.style.display = "none";
+        } 
+        else {
+            // Default state
+            myCol.style.display = "none";
+            colLoc_display.style.display = "none";
+        }
+
+        if (resStat_display.textContent == "Renting" ||resStat_display.textContent == "Returned" ) {
+            colLoc_display.style.display = "none";
+        }
+    }
+
+    // collection location
+    window.chooseLoc = function (event, number) {
+        event.preventDefault();
+        const colLoc_display = document.getElementById("colLoc_display");
+        const col = document.getElementById('col');
+
+        if (number == 1) {
+            localStorage.setItem("colLoc", "Branch 1");
+            colLoc_display.textContent = "Collecting at Branch 1";
+        } 
+        else if (number == 2) {
+            localStorage.setItem("colLoc", "Branch 2");
+            colLoc_display.textContent = "Collecting at Branch 2";
+        }
+
+        // Update UI
+        colLoc_display.style.display = "block";
+        col.style.display = "none";
+    };
+
 
 
     const isChargeSent = localStorage.getItem("chargeSent");
@@ -221,6 +276,8 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("reservation_S", "Not Renting");  // reset status
         localStorage.setItem("chargeSent", "0");   // reset charge flag
         localStorage.removeItem("dFound");         // reset damages
+        localStorage.removeItem("mColVis");        // reset location UI visibility
+        localStorage.removeItem("colLoc");         // ✅ remove selected branch
 
         // Reset the notification board on customer page
         const notiB_currCar = document.getElementById("currentCar");
@@ -229,19 +286,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const notiB_resStatus = document.getElementById("res_status_display");
         if (notiB_resStatus) notiB_resStatus.textContent = "Not Renting";
 
+        // ✅ Hide the collection location display
+        const colLoc_display = document.getElementById("colLoc_display");
+        if (colLoc_display) colLoc_display.style.display = "none";
+
         alert("Successful Payment! Thank you for renting with AZoom");
-}
+    }
+
 
    
 
 
     // ------------------------------
-    // window.charge = function(event) {
-    //     event.preventDefault();
-
-    //     const cs = document.getElementById("cs_BG");
-    //     cs.style.display ="block";
-    // }
 
     window.disappear = function(event) {
         event.preventDefault();
@@ -254,18 +310,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const testRowDiv = document.createElement("div");
     testRowDiv.className = "testRow";
     const hEmail = document.createElement("h4");
-    hEmail.id="hEmail";
+    hEmail.id ="hEmail";
     hEmail.textContent = "Customer Email: " + localStorage.getItem("loggedInCust");
     const hStatus = document.createElement("h4");
-    hStatus.id= "hStatus";
+    hStatus.id = "hStatus";
     hStatus.textContent = "Booking Status: " + localStorage.getItem("reservation_S");
+
+    const hasCollected = document.createElement("h4");
+    hasCollected.id = "hasCollected";
+    hasCollected.textContent = "Has Collected?: Collecting at " + localStorage.getItem("colLoc");
+
+    //cust collected car button
+    const custCollectedButton = document.createElement("button");
+    custCollectedButton.textContent = "Collected";
+    custCollectedButton.setAttribute("onclick", "setCollected(event)");
+
+    // charge Button
     const chargeButton = document.createElement("button");
-    // chargeButton.id = "chargeButton"
     chargeButton.textContent = "Charge";
     chargeButton.setAttribute("onclick", "charge(event)");
 
     testRowDiv.appendChild(hEmail);
     testRowDiv.appendChild(hStatus);
+    testRowDiv.appendChild(hasCollected);
+    testRowDiv.appendChild(custCollectedButton);
     testRowDiv.appendChild(chargeButton);
 
     // adding test row in custDiv
@@ -274,7 +342,51 @@ document.addEventListener("DOMContentLoaded", () => {
         custDiv.appendChild(testRowDiv);
     }
 
+
     //-----------------------
+    // car collected 
+    // window.setCollected = function(event) {
+    //     event.preventDefault();
+
+    //     const hasCollected = document.getElementById("hasCollected");
+    //     hasCollected.textContent = "Has Collected?: Yes";
+
+    //     // const hStatus = document.getElementById("hStatus");
+    //     // hStatus.textContent = ""
+    //     localStorage.setItem("reservation_S", "Renting");
+    // }
+    const collectedStatus = localStorage.getItem("hCollected");
+    if (hasCollected) {
+        const hasCollected = document.getElementById("hasCollected");
+        if (collectedStatus == "Yes") {
+            hasCollected.textContent = "Has Collected?: Yes";
+        }
+    }
+    
+    
+    window.setCollected = function(event) {
+        event.preventDefault();
+
+        // Update localStorage
+        localStorage.setItem("reservation_S", "Renting");
+
+        // Update Employee dashboard text
+        const hasCollected = document.getElementById("hasCollected");
+        localStorage.setItem("hCollected", "Yes")
+        hasCollected.textContent = "Has Collected?: Yes";
+
+        // Update Home Page status (if user is on home.html)
+        const homeStatus = document.getElementById("res_status_display");
+        if (homeStatus) {
+            homeStatus.textContent = "Renting";
+        }
+
+        // Hide collection location on home page
+        const colLoc_display = document.getElementById("colLoc_display");
+        if (colLoc_display) colLoc_display.style.display = "none";
+    };
+
+
     // making charge sheet
     window.charge = function(event) {
         event.preventDefault();

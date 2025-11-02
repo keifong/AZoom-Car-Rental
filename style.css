@@ -289,6 +289,25 @@ button:hover {
     font-size: 120%;
 }
 
+#col {
+    margin-left: 3%;
+    width: 50%;
+    background-color: #c1c1c1;
+    border-radius: 20px;
+    padding: 3%;
+    display: none;
+}
+
+#colbut {
+    display: flex;
+    flex-direction:  row;
+    justify-content: space-between;
+}
+
+#colbut button {
+    width: 45%;
+}
+
 .contentDiv {
     width: 100%;
     height: 40vh;
