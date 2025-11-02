@@ -363,19 +363,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-    
+
     window.setCollected = function(event) {
         event.preventDefault();
 
-        // Update localStorage
+        // Save to localStorage
         localStorage.setItem("reservation_S", "Renting");
+        localStorage.setItem("hCollected", "Yes");
 
-        // Update Employee dashboard text
+        // Update Employee Page immediately
         const hasCollected = document.getElementById("hasCollected");
-        localStorage.setItem("hCollected", "Yes")
-        hasCollected.textContent = "Has Collected?: Yes";
+        const hStatus = document.getElementById("hStatus");
 
-        // Update Home Page status (if user is on home.html)
+        if (hasCollected) {
+            hasCollected.textContent = "Has Collected?: Yes";
+        }
+        if (hStatus) {
+            hStatus.textContent = "Booking Status: Renting"; // ✅ update employee screen instantly
+        }
+
+        // Update Home Page (if open in another tab/page)
         const homeStatus = document.getElementById("res_status_display");
         if (homeStatus) {
             homeStatus.textContent = "Renting";
@@ -385,6 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const colLoc_display = document.getElementById("colLoc_display");
         if (colLoc_display) colLoc_display.style.display = "none";
     };
+
 
 
     // making charge sheet
