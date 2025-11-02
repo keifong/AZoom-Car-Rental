@@ -430,7 +430,6 @@ h2 {
     transform: rotateY(180deg);
   }
   100% {
-    /* transform: rotateY(180deg)translateX(-68vw); */
     transform: rotateY(180deg)
     translateX(calc(-98vw + 100% + 50px));
   }

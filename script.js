@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
         csDiv.style.display = "none";
     }
 
-    // making testRow
+    // making testRow ----------------------------------------------
     const testRowDiv = document.createElement("div");
     testRowDiv.className = "testRow";
     const hEmail = document.createElement("h4");
@@ -344,17 +344,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     //-----------------------
-    // car collected 
-    // window.setCollected = function(event) {
-    //     event.preventDefault();
-
-    //     const hasCollected = document.getElementById("hasCollected");
-    //     hasCollected.textContent = "Has Collected?: Yes";
-
-    //     // const hStatus = document.getElementById("hStatus");
-    //     // hStatus.textContent = ""
-    //     localStorage.setItem("reservation_S", "Renting");
-    // }
     const collectedStatus = localStorage.getItem("hCollected");
     if (hasCollected) {
         const hasCollected = document.getElementById("hasCollected");
